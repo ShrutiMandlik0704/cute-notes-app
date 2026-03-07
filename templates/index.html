@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>✨ Cute Notes App ✨</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<h1>🌸 My Cute Notes 🌸</h1>
+
+<form method="POST">
+
+<input type="text" name="title" placeholder="Note title" required>
+
+<textarea name="content" placeholder="Write something cute..." required></textarea>
+
+<button type="submit">Add Note 💗</button>
+
+</form>
+
+<h2>Saved Notes</h2>
+
+<div class="notes">
+
+{% for note in notes %}
+
+<div class="note">
+
+<h3>{{ note['title'] }}</h3>
+
+<p>{{ note['content'] }}</p>
+
+<div class="buttons">
+
+<a href="/edit/{{ note['id'] }}">
+<button class="edit">Edit ✏️</button>
+</a>
+
+<a href="/delete/{{ note['id'] }}">
+<button class="delete">Delete 🗑</button>
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>
